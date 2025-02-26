@@ -153,60 +153,65 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del_vest" && isset($_POST["i
     </head>
     <body>
 
-        <form action="?act=save_vest" method="POST" name="form2" >
-          <h1>Adicionar vestuario</h1>
-          <hr>
-          <input type="hidden" name="id" <?php
-            if (isset($id) && $id != null || $id != "") {
-                echo "value=\"{$id}\"";
-            }
-            ?>/>
-          Tipo:
-          <input type="text" name="tipo" <?php
-            if (isset($tipo) && $tipo != null || $tipo != "") {
-                echo "value=\"{$tipo}\"";
-            }
-            ?>/>
-          <br/>
-          Marca:
-          <input type="text" name="marca" <?php
-            if (isset($marca) && $marca != null || $marca != "") {
-                echo "value=\"{$marca}\"";
-            }
-            ?>/>
-          <br/>
-          Cor:
-          <input type="text" name="cor" <?php
-            if (isset($cor) && $cor != null || $cor != "") {
-                echo "value=\"{$cor}\"";
-            }
-            ?>/>
-         <br/>
-          Legenda:
-           <input type="text" name="legenda" <?php
-            if (isset($legenda) && $legenda != null || $legenda != "") {
-                echo "value=\"{$legenda}\"";
-            }
-            ?>/>
-         <br/>
-         Quantidade:
-           <input type="text" name="quantidade" <?php
-            if (isset($quantidade) && $quantidade != null || $quantidade != "") {
-                echo "value=\"{$quantidade}\"";
-            }
-            ?>/>
-           <br/>
-           Preço:
-          <input type="text" name="preço" <?php
-            if (isset($preço) && $preço != null || $preço != "") {
-                echo "value=\"{$preço}\"";
-            }
-            ?>/>
-           <br/>
-         <input type="submit" value="Salvar" />
-         <input type="reset" value="Novo" />
-         <hr>
-         </form>
+        <div class="form-container">
+            <form action="?act=save_vest" method="POST" name="form2" >
+            <h1 style="text-align: center;">ADICIONAR VESTUÁRIO</h1>
+            <hr>
+            <input type="hidden" name="id" <?php
+                if (isset($id) && $id != null || $id != "") {
+                    echo "value=\"{$id}\"";
+                }
+                ?>/>
+            Tipo:
+            <input type="text" name="tipo" <?php
+                if (isset($tipo) && $tipo != null || $tipo != "") {
+                    echo "value=\"{$tipo}\"";
+                }
+                ?>/>
+            <br/>
+            Marca:
+            <input type="text" name="marca" <?php
+                if (isset($marca) && $marca != null || $marca != "") {
+                    echo "value=\"{$marca}\"";
+                }
+                ?>/>
+            <br/>
+            Cor:
+            <input type="text" name="cor" <?php
+                if (isset($cor) && $cor != null || $cor != "") {
+                    echo "value=\"{$cor}\"";
+                }
+                ?>/>
+            <br/>
+            Legenda:
+            <input type="text" name="legenda" <?php
+                if (isset($legenda) && $legenda != null || $legenda != "") {
+                    echo "value=\"{$legenda}\"";
+                }
+                ?>/>
+            <br/>
+            Quantidade:
+            <input type="text" name="quantidade" <?php
+                if (isset($quantidade) && $quantidade != null || $quantidade != "") {
+                    echo "value=\"{$quantidade}\"";
+                }
+                ?>/>
+            <br/>
+            Preço:
+            <input type="text" name="preço" <?php
+                if (isset($preço) && $preço != null || $preço != "") {
+                    echo "value=\"{$preço}\"";
+                }
+                ?>/>
+            <br/>
+            <div style="display: flex;">
+                <input type="submit" value="Salvar" />
+                <input type="reset" value="Novo" />
+            </div>
+            <hr>
+            <br>
+            </form>
+        </div>
 
          <?php
          $comando1 = $con->query("SELECT Vestuario.id AS vestuario_id, Login.id AS usuario_id, Vestuario.*, Login.*
@@ -215,24 +220,29 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del_vest" && isset($_POST["i
                          WHERE Vestuario.usuario = '$username'");
          
          while ($var_linha = $comando1->fetch()) {
-            
-            echo "<form action=\"?act=att_vest\" method=\"POST\" style=\"display: inline;\">
-                   <input type=\"hidden\" name=\"id\" value=\"" . $var_linha['vestuario_id'] . "\" />
-                   Tipo: <input type=\"text\" name=\"tipo_view\" value=\"" . $var_linha['tipo'] . "\" /><br/>
-                   Marca: <input type=\"text\" name=\"marca_view\" value=\"" . $var_linha['marca'] . "\" /><br/>
-                   Cor: <input type=\"text\" name=\"cor_view\" value=\"" . $var_linha['cor'] . "\" /><br/>
-                   Legenda: <input type=\"text\" name=\"legenda_view\" value=\"" . $var_linha['legenda'] . "\" /><br/>
-                   Quantidade: <input type=\"text\" name=\"quantidade_view\" value=\"" . $var_linha['quantidade'] . "\" /><br/>
-                   Preço: <input type=\"text\" name=\"preço_view\" value=\"" . $var_linha['preço'] . "\" /><br/>
-                   <input type=\"submit\" value=\"Atualizar\" onclick=\"return confirm('Atualizar esta peça??');\"/>
-                   </form>
-                   <form action=\"?act=del_vest\" method=\"POST\" style=\"display: inline;\">
-                    <input type=\"hidden\" name=\"id\" value=\"" . $var_linha['vestuario_id'] . "\" />
-                    <input type=\"submit\" value=\"Deletar\" onclick=\"return confirm('Deletar esta peça?');\"/>
+            echo "<div class=\"form-container\">
+                    <form action=\"?act=att_vest\" method=\"POST\">
+                        <input type=\"hidden\" name=\"id\" value=\"" . $var_linha['vestuario_id'] . "\" />
+                        Tipo: <input type=\"text\" name=\"tipo_view\" value=\"" . $var_linha['tipo'] . "\" /><br/>
+                        Marca: <input type=\"text\" name=\"marca_view\" value=\"" . $var_linha['marca'] . "\" /><br/>
+                        Cor: <input type=\"text\" name=\"cor_view\" value=\"" . $var_linha['cor'] . "\" /><br/>
+                        Legenda: <input type=\"text\" name=\"legenda_view\" value=\"" . $var_linha['legenda'] . "\" /><br/>
+                        Quantidade: <input type=\"text\" name=\"quantidade_view\" value=\"" . $var_linha['quantidade'] . "\" /><br/>
+                        Preço: <input type=\"text\" name=\"preço_view\" value=\"" . $var_linha['preço'] . "\" /><br/>
+                        <div style=\"display: flex; align-items: center; gap: 10px; margin-top: 10px;\">
+                            <input type=\"submit\" value=\"Atualizar\" onclick=\"return confirm('Atualizar esta peça?');\"/>
+                        
                     </form>
-                    <hr/>";
+                    <form action=\"?act=del_vest\" method=\"POST\">
+                        <input type=\"hidden\" name=\"id\" value=\"" . $var_linha['vestuario_id'] . "\" />
+                            <input type=\"submit\" value=\"Deletar\" onclick=\"return confirm('Deletar esta peça?');\" style=\"background-color: red;\"/>
+                        </div>
+                    </form>
+                </div>";
         }
-        ?>
+
+
+?>
 
     </body>
 </html>

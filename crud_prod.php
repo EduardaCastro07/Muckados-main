@@ -163,72 +163,77 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del_prod" && isset($_POST["i
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <form action="?act=save_prod" method="POST" name="form1">
-          <h1>Adicionar produtos</h1>
-          <hr>
-          <input type="hidden" name="id" <?php
-            if (isset($id) && $id != null || $id != "") {
-                echo "value=\"{$id}\"";
-            }
-            ?>/>
+        <div class="form-container">
+            <form action="?act=save_prod" method="POST" name="form1">
+            <h1  style="text-align: center;">ADICIONAR PRODUTO</h1>
+            <hr>
+            <input type="hidden" name="id" <?php
+                if (isset($id) && $id != null || $id != "") {
+                    echo "value=\"{$id}\"";
+                }
+                ?>/>
 
-          Nome:
-          <input type="text" name="nome" <?php
-            if (isset($nome) && $nome != null || $nome != "") {
-                echo "value=\"{$nome}\"";
-            }
-            ?>/>
-          <br/>
-          Tipo:
-          <input type="text" name="tipo" <?php
-            if (isset($tipo) && $tipo != null || $tipo != "") {
-                echo "value=\"{$tipo}\"";
-            }
-            ?>/>
-          <br/>
-          Marca:
-          <input type="text" name="marca" <?php
-            if (isset($marca) && $marca != null || $marca != "") {
-                echo "value=\"{$marca}\"";
-            }
-            ?>/>
-          
-          <br/>
-          
-          Sabor:
-          <input type="text" name="sabor" <?php
-            if (isset($sabor) && $sabor != null || $sabor != "") {
-                echo "value=\"{$sabor}\"";
-            }
-            ?>/>
-          
-          <br/>
+            Nome:
+            <input type="text" name="nome" <?php
+                if (isset($nome) && $nome != null || $nome != "") {
+                    echo "value=\"{$nome}\"";
+                }
+                ?>/>
+            <br/>
+            Tipo:
+            <input type="text" name="tipo" <?php
+                if (isset($tipo) && $tipo != null || $tipo != "") {
+                    echo "value=\"{$tipo}\"";
+                }
+                ?>/>
+            <br/>
+            Marca:
+            <input type="text" name="marca" <?php
+                if (isset($marca) && $marca != null || $marca != "") {
+                    echo "value=\"{$marca}\"";
+                }
+                ?>/>
+            
+            <br/>
+            
+            Sabor:
+            <input type="text" name="sabor" <?php
+                if (isset($sabor) && $sabor != null || $sabor != "") {
+                    echo "value=\"{$sabor}\"";
+                }
+                ?>/>
+            
+            <br/>
 
-          Legenda:
-          <input type="text" name="legenda" <?php
-            if (isset($legenda) && $legenda != null || $legenda != "") {
-                echo "value=\"{$legenda}\"";
-            }
-            ?>/>
-           <br/>
-           Quantidade:
-           <input type="text" name="quantidade" <?php
-            if (isset($quantidade) && $quantidade != null || $quantidade != "") {
-                echo "value=\"{$quantidade}\"";
-            }
-            ?>/>
-           <br/>
-           Preço:
-          <input type="text" name="preço" <?php
-            if (isset($preço) && $preço != null || $preço != "") {
-                echo "value=\"{$preço}\"";
-            }
-            ?>/>
-           <br/>
-         <input type="submit" value="Salvar" />
-         <input type="reset" value="Novo" />
-         <hr>
-        </form>
+            Legenda:
+            <input type="text" name="legenda" <?php
+                if (isset($legenda) && $legenda != null || $legenda != "") {
+                    echo "value=\"{$legenda}\"";
+                }
+                ?>/>
+            <br/>
+            Quantidade:
+            <input type="text" name="quantidade" <?php
+                if (isset($quantidade) && $quantidade != null || $quantidade != "") {
+                    echo "value=\"{$quantidade}\"";
+                }
+                ?>/>
+            <br/>
+            Preço:
+            <input type="text" name="preço" <?php
+                if (isset($preço) && $preço != null || $preço != "") {
+                    echo "value=\"{$preço}\"";
+                }
+                ?>/>
+            <br/>
+            <div style="display: flex;">
+                <input type="submit" value="Salvar" />
+                <input type="reset" value="Novo" />
+            </div>
+            <hr>
+            <br>
+            </form>
+        </div>
 
         <?php
          $comando1 = $con->query("SELECT Produto.id AS produto_id, Login.id AS usuario_id, Produto.*, Login.*
@@ -238,7 +243,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del_prod" && isset($_POST["i
          
          while ($var_linha = $comando1->fetch()) {
             
-            echo "<form action=\"?act=att_prod\" method=\"POST\" style=\"display: inline;\">
+            echo "<div class=\"form-container\"><form action=\"?act=att_prod\" method=\"POST\" style=\"display: inline;\">
                    <input type=\"hidden\" name=\"id\" value=\"" . $var_linha['produto_id'] . "\" />
                    Nome: <input type=\"text\" name=\"nome_view\" value=\"" . $var_linha['nome'] . "\" /><br/>
                    Tipo: <input type=\"text\" name=\"tipo_view\" value=\"" . $var_linha['tipo'] . "\" /><br/>

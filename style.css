@@ -44,3 +44,31 @@ a:hover {
         justify-content: center; /* Alinha no centro horizontal */
         align-items: center; /* Alinha no centro vertical */
 }
+
+.form-container {
+    width: 50%;
+    margin: auto;
+    margin-top: -72px; /* Valor positivo */
+    padding: 1px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="submit"],
+.form-container input[type="reset"] {
+    display: flex;
+    width: 80%;
+    padding: 1px;
+    margin-bottom: -11px; /* Removendo valores negativos */
+    border: 1px solid #ccc;
+    gap: -5px;
+}
+
+.form-container input[type="submit"],
+.form-container input[type="reset"] {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    width:500px;
+}
